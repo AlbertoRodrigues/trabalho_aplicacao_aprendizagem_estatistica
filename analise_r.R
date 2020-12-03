@@ -23,7 +23,7 @@ a=(ggplot(X)+aes(factor(TARGET),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
       scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade",title="Antes do NearMiss")
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade",title="Antes do NearMiss")
    +theme_classic())
 NearMiss=data.frame("classe"=c(rep(0,50000),rep(1,2406)))
 b=(ggplot(NearMiss)+aes(factor(classe),y = prop.table(stat(count)), 
@@ -36,7 +36,7 @@ b=(ggplot(NearMiss)+aes(factor(classe),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
       scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade",title="Depois do NearMiss")
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade",title="Depois do NearMiss")
    +theme_classic())
 grid.arrange(a,b,ncol=2)
 
@@ -50,7 +50,7 @@ apply(dados,2,function(x) sum(is.na(x)))
 sum(apply(dados,2,function(x) var(x))==0)
 
 
-#CriaÁ„o de vari·vel, n˙mero de zeros de uma observaÁ„o
+#Cria√ß√£o de vari√°vel, n√∫mero de zeros de uma observa√ß√£o
 X$quant_zero=apply(X,1,function(x) sum(x==0))
 teste$quant_zero=apply(teste,1,function(x) sum(x==0))
 
@@ -66,7 +66,7 @@ grid.arrange(a,b,ncol=2)
 summary(X$quant_zero[X$TARGET==0])
 summary(X$quant_zero[X$TARGET==1])
 
-#Vari·vel n˙mero de produtos
+#Vari√°vel n√∫mero de produtos
 X$num_var4
 
 #TROCAR dados por X!!!!!!
@@ -81,7 +81,7 @@ a=(ggplot(X[X$TARGET==0,])+aes(factor(num_var4),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
      scale_y_continuous(labels = scales::percent)
-   +labs(x = 'Quantidade de produtos', y = 'ProporÁ„o',fill="Quantidade",title="Clientes Satisfeitos")
+   +labs(x = 'Quantidade de produtos', y = 'Propor√ß√£o',fill="Quantidade",title="Clientes Satisfeitos")
    +theme_classic())
 
 b=(ggplot(X[X$TARGET==1,])+aes(factor(num_var4),y = prop.table(stat(count)), 
@@ -93,20 +93,20 @@ b=(ggplot(X[X$TARGET==1,])+aes(factor(num_var4),y = prop.table(stat(count)),
              vjust = -0.5, 
              size = 3) + 
     scale_y_continuous(labels = scales::percent)
-  +labs(x = 'Quantidade de produtos', y = 'ProporÁ„o',fill="Quantidade"
+  +labs(x = 'Quantidade de produtos', y = 'Propor√ß√£o',fill="Quantidade"
         ,title="Clientes Insatisfeitos")
   +theme_classic())
 
 
 grid.arrange(a,b,ncol=2)
-#CriaÁ„o de vari·vel qualitativa
+#Cria√ß√£o de vari√°vel qualitativa
 X$quant_produto0=ifelse(X$num_var4==0,1,0)
 X$quant_produto1=ifelse(X$num_var4==1,1,0)
 teste$quant_produto0=ifelse(teste$num_var4==0,1,0)
 teste$quant_produto1=ifelse(teste$num_var4==1,1,0)
 
 
-#Vari·vel var38
+#Vari√°vel var38
 dados$var38
 
 ggplot(X)+aes(var38)+geom_histogram(color="black",fill="#00AFBB")+theme_classic()
@@ -131,11 +131,11 @@ X$var38_normal_dummy=ifelse(X$var38!=117310.979016494,1,0)
 teste$var38_normal=ifelse(teste$var38!=117310.979016494,log(teste$var38),0)
 teste$var38_normal_dummy=ifelse(teste$var38!=117310.979016494,1,0)
 
-#Vari·vel criada 1
+#Vari√°vel criada 1
 #(ggplot(X)+aes(var38_normal)+geom_histogram(color="black",fill="#00AFBB")+theme_classic())
 ggplot(X)+aes(var38_normal)+geom_histogram(aes(y=..density..),color="black",fill="#00AFBB")+theme_classic()+facet_grid(~factor(TARGET))
 
-#Vari·vel criada 2
+#Vari√°vel criada 2
 a=(ggplot(X[X$TARGET==0,])+aes(factor(var38_normal_dummy),y = prop.table(stat(count)), 
                                        fill = factor(var38_normal_dummy), label = scales::percent(prop.table(stat(count))))
    +geom_bar()
@@ -145,7 +145,7 @@ a=(ggplot(X[X$TARGET==0,])+aes(factor(var38_normal_dummy),y = prop.table(stat(co
               vjust = -0.5, 
               size = 3) + 
      scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade",title="Clientes Satisfeitos")
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade",title="Clientes Satisfeitos")
    +theme_classic());a
 
 b=(ggplot(X[X$TARGET==1,])+aes(factor(var38_normal_dummy),y = prop.table(stat(count)), 
@@ -157,11 +157,11 @@ b=(ggplot(X[X$TARGET==1,])+aes(factor(var38_normal_dummy),y = prop.table(stat(co
               vjust = -0.5, 
               size = 3) + 
      scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade",title="Clientes Insatisfeitos")
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade",title="Clientes Insatisfeitos")
    +theme_classic());b
 grid.arrange(a,b,ncol=2)
 
-#Vari·vel 15
+#Vari√°vel 15
 X$var15
 ggplot(X)+aes(var15)+geom_histogram(color="black",fill="#00AFBB")+theme_classic()
 a=(ggplot(X[X$TARGET==0,])+aes(var15)+geom_histogram(aes(y=..density..),color="black",fill="#00AFBB")+theme_classic()
@@ -179,7 +179,7 @@ table(X$var15[X$TARGET==1])[1:5]
 
 X$idade_menor=ifelse(X$var15<=21,1,0)
 teste$idade_menor=ifelse(teste$var15<=21,1,0)
-#Vari·vel 36
+#Vari√°vel 36
 X$var36
 table(X$var36[X$TARGET==0])
 table(X$var36[X$TARGET==1])
@@ -192,7 +192,7 @@ a=(ggplot(X[X$TARGET==0,])+aes(factor(var36),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
      scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade",title="Clientes Satisfeitos")
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade",title="Clientes Satisfeitos")
    +theme_classic())
 
 b=(ggplot(X[X$TARGET==1,])+aes(factor(var36),y = prop.table(stat(count)), 
@@ -204,7 +204,7 @@ b=(ggplot(X[X$TARGET==1,])+aes(factor(var36),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
      scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade"
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade"
          ,title="Clientes Insatisfeitos")
    +theme_classic())
 
@@ -228,7 +228,7 @@ a=(ggplot(X[X$TARGET==0,])+aes(factor(num_var5),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
       scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade",title="Clientes Satisfeitos")
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade",title="Clientes Satisfeitos")
    +theme_classic())
 
 b=(ggplot(X[X$TARGET==1,])+aes(factor(num_var5),y = prop.table(stat(count)), 
@@ -240,7 +240,7 @@ b=(ggplot(X[X$TARGET==1,])+aes(factor(num_var5),y = prop.table(stat(count)),
               vjust = -0.5, 
               size = 3) + 
       scale_y_continuous(labels = scales::percent)
-   +labs(x = ' ', y = 'ProporÁ„o',fill="Quantidade"
+   +labs(x = ' ', y = 'Propor√ß√£o',fill="Quantidade"
          ,title="Clientes Insatisfeitos")
    +theme_classic())
 grid.arrange(a,b,ncol=2)
@@ -249,7 +249,7 @@ X$num_var5_6=ifelse(X$num_var5==6,1,0)
 X$num_var5_0=ifelse(X$num_var5==0,1,0)
 teste$num_var5_6=ifelse(teste$num_var5==6,1,0)
 teste$num_var5_0=ifelse(teste$num_var5==0,1,0)
-#Vari·vel saldo_medio_var5_hace3
+#Vari√°vel saldo_medio_var5_hace3
 summary(X$saldo_medio_var5_hace3)
 sort(table(X$saldo_medio_var5_hace3),decreasing=T)[1:5]
 (ggplot(X)+aes(saldo_medio_var5_hace3)
@@ -262,7 +262,7 @@ sort(table(X$saldo_medio_var5_hace3),decreasing=T)[1:5]
 (ggplot(X[X$saldo_medio_var5_hace3!=0,])+aes(log(saldo_medio_var5_hace3))
 +geom_histogram(aes(y=..density..),color="black",fill="#00AFBB")
 +theme_classic()+facet_grid(~factor(TARGET)))
-#Vari·vel saldo_medio_var5_hace2
+#Vari√°vel saldo_medio_var5_hace2
 summary(X$saldo_medio_var5_hace2)
 sort(table(X$saldo_medio_var5_hace2),decreasing=T)[1:5]
 (ggplot(X)+aes(saldo_medio_var5_hace2)
@@ -277,13 +277,13 @@ sort(table(X$saldo_medio_var5_hace2),decreasing=T)[1:5]
    +geom_histogram(aes(y=..density..),color="black",fill="#00AFBB")
    +theme_classic()+facet_grid(~factor(TARGET)))
 
-# Vari·vel saldo_medio_var5_ult3 
+# Vari√°vel saldo_medio_var5_ult3 
 summary(X$saldo_medio_var5_ult3)
 sort(table(X$saldo_medio_var5_ult3),decreasing=T)[1:5]
 (ggplot(X[X$saldo_medio_var5_ult3!=0,])+aes(log(saldo_medio_var5_ult3))
    +geom_histogram(aes(y=..density..),color="black",fill="#00AFBB")
    +theme_classic()+facet_grid(~factor(TARGET)))
-# Vari·vel saldo_var5
+# Vari√°vel saldo_var5
 summary(X)
 sort(table(X$saldo_var5),decreasing=T)[1:5]
 
@@ -295,29 +295,29 @@ sort(table(X$saldo_var5),decreasing=T)[1:5]
    +theme_classic()+facet_grid(~factor(TARGET)))
 3
  
-#ExportaÁ„o para a seleÁ„o inicial de vari·veis
+#Exporta√ß√£o para a sele√ß√£o inicial de vari√°veis
 write.csv(X,file="\\Users\\Alberto\\Desktop\\ime-usp\\aprendizagem_estatistica\\trabalho_aplicacao\\treino_com_criacao_variaveis.csv",row.names=F)
 write.csv(teste,file="\\Users\\Alberto\\Desktop\\ime-usp\\aprendizagem_estatistica\\trabalho_aplicacao\\teste_com_criacao_variaveis.csv",row.names=F)
 
 
 
 
-#VisualizaÁ„o das mÈtricas apÛs a mediÁ„o das mÈtricas
+#Visualiza√ß√£o das m√©tricas ap√≥s a medi√ß√£o das m√©tricas
 metricas=read.csv(file.choose())
 head(metricas)
 
 a=(ggplot(metricas)
    +geom_line(aes(x=indices,y=roc_auc_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=roc_auc_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="ROC AUC ",x="Quantidade de vari·veis"
-         ,title="¡rea sobre a curva ROC")
+   +labs(color='Conjuntos', y="ROC AUC ",x="Quantidade de vari√°veis"
+         ,title="√Årea sobre a curva ROC")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
 
 b=(ggplot(metricas)
    +geom_line(aes(x=indices,y=recall_0_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=recall_0_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="Recall",x="Quantidade de vari·veis"
+   +labs(color='Conjuntos', y="Recall",x="Quantidade de vari√°veis"
          ,title="Recall-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -326,7 +326,7 @@ b=(ggplot(metricas)
 c=(ggplot(metricas)
    +geom_line(aes(x=indices,y=recall_1_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=recall_1_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="Recall",x="Quantidade de vari·veis"
+   +labs(color='Conjuntos', y="Recall",x="Quantidade de vari√°veis"
          ,title="Recall-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -334,7 +334,7 @@ c=(ggplot(metricas)
 d=(ggplot(metricas)
    +geom_line(aes(x=indices,y=precision_0_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=precision_0_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="Precision",x="Quantidade de vari·veis"
+   +labs(color='Conjuntos', y="Precision",x="Quantidade de vari√°veis"
          ,title="Precision-Clientes Satisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -342,7 +342,7 @@ d=(ggplot(metricas)
 e=(ggplot(metricas)
    +geom_line(aes(x=indices,y=precision_1_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=precision_1_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="Precision",x="Quantidade de vari·veis"
+   +labs(color='Conjuntos', y="Precision",x="Quantidade de vari√°veis"
          ,title="Precision-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -350,7 +350,7 @@ e=(ggplot(metricas)
 f=(ggplot(metricas)
    +geom_line(aes(x=indices,y=f1_0_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=f1_0_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="F1 Score",x="Quantidade de vari·veis"
+   +labs(color='Conjuntos', y="F1 Score",x="Quantidade de vari√°veis"
          , title="F1 Score-Clientes Satisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -358,7 +358,7 @@ f=(ggplot(metricas)
 g=(ggplot(metricas)
    +geom_line(aes(x=indices,y=f1_1_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=f1_1_teste,col="Teste"),size=1.7)
-   +labs(color='Conjuntos', y="F1 Score",x="Quantidade de vari·veis", 
+   +labs(color='Conjuntos', y="F1 Score",x="Quantidade de vari√°veis", 
          title="F1 Score-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -366,9 +366,9 @@ g=(ggplot(metricas)
 h=(ggplot(metricas)
    +geom_line(aes(x=indices,y=f1_treino,col="Treino"),size=1.7)
    +geom_line(aes(x=indices,y=f1_teste,col="Teste"),size=1.7)
-   +labs(y="F1 Score",x="Quantidade de vari·veis")
+   +labs(y="F1 Score",x="Quantidade de vari√°veis")
    +scale_colour_brewer(palette = "Set1")
-   +labs(color='Conjuntos', title="F1 Score mÈdio das duas classes")
+   +labs(color='Conjuntos', title="F1 Score m√©dio das duas classes")
    +theme_classic())
 grid.arrange(c,e, ncol=2)
 grid.arrange(g,h, ncol=2)
@@ -383,15 +383,15 @@ indices=1:3
 a2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=roc_auc_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=roc_auc_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="ROC AUC ",x="PartiÁ„o"
-         ,title="¡rea sobre a curva ROC")
+   +labs(color='Modelos', y="ROC AUC ",x="Parti√ß√£o"
+         ,title="√Årea sobre a curva ROC")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
 
 b2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=recall_0_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=recall_0_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="Recall",x="PartiÁ„o"
+   +labs(color='Modelos', y="Recall",x="Parti√ß√£o"
          ,title="Recall-Clientes Satisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -400,7 +400,7 @@ b2=(ggplot(metricas_boosting)
 c2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=recall_1_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=recall_1_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="Recall",x="PartiÁ„o"
+   +labs(color='Modelos', y="Recall",x="Parti√ß√£o"
          ,title="Recall-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -408,7 +408,7 @@ c2=(ggplot(metricas_boosting)
 d2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=precision_0_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=precision_0_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="Precision",x="PartiÁ„o"
+   +labs(color='Modelos', y="Precision",x="Parti√ß√£o"
          ,title="Precision-Clientes Satisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -416,7 +416,7 @@ d2=(ggplot(metricas_boosting)
 e2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=precision_1_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=precision_1_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="Precision",x="PartiÁ„o"
+   +labs(color='Modelos', y="Precision",x="Parti√ß√£o"
          ,title="Precision-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -424,7 +424,7 @@ e2=(ggplot(metricas_boosting)
 f2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=f1_0_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=f1_0_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="F1 Score",x="PartiÁ„o"
+   +labs(color='Modelos', y="F1 Score",x="Parti√ß√£o"
          , title="F1 Score-Clientes Satisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -432,7 +432,7 @@ f2=(ggplot(metricas_boosting)
 g2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=f1_1_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=f1_1_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(color='Modelos', y="F1 Score",x="PartiÁ„o", 
+   +labs(color='Modelos', y="F1 Score",x="Parti√ß√£o", 
          title="F1 Score-Clientes Insatisfeitos")
    +scale_colour_brewer(palette = "Set1")
    +theme_classic())
@@ -440,9 +440,9 @@ g2=(ggplot(metricas_boosting)
 h2=(ggplot(metricas_boosting)
    +geom_line(aes(x=indices,y=f1_modelo1,col="AdaBoost"),size=1.7)
    +geom_line(aes(x=indices,y=f1_modelo2,col="GradientBoosting"),size=1.7)
-   +labs(y="F1 Score",x="PartiÁ„o")
+   +labs(y="F1 Score",x="Parti√ß√£o")
    +scale_colour_brewer(palette = "Set1")
-   +labs(color='Modelos', title="F1 Score mÈdio das duas classes")
+   +labs(color='Modelos', title="F1 Score m√©dio das duas classes")
    +theme_classic())
 grid.arrange(c2,e2,g2,h2, ncol=2)
 #grid.arrange(, ncol=2)
